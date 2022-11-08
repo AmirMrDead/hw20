@@ -47,12 +47,11 @@ public class Validation {
         System.out.print("Enter your lastname: ");
         String lastname = validName(scanner.next());
         System.out.print("Enter your nationalCode: ");
-        String username = scanner.next();
+        String username = checkExistNationalCode(validNumber(scanner.next()).toString());
         System.out.print("Enter your password: ");
         String password = scanner.next();
         if(type.equalsIgnoreCase("patient")){
             Patient patient = new Patient(firstname, lastname, username, password);
-            System.out.println("aa");
             patientService.saveOrUpdate(patient);
         }
     }

@@ -102,6 +102,7 @@ public class ClinicOperations {
     private void saveTurn(Patient patient, Doctor doctor, LocalDateTime newTime) {
         Turn turn = new Turn(patient, doctor, newTime, false);
         turnService.saveOrUpdate(turn);
+        System.out.println(turn);
     }
 
     private LocalDateTime setAppointment(LocalDate localDate, DoctorTime doctorTime, List<Turn> turns) {

@@ -36,6 +36,10 @@ public class PatientOperations {
     public void cancelTurn(Patient patient){
         TurnService turnService = new TurnServiceImpl(new TurnRepositoryImpl(Hibernate.getEntityManagerFactory().createEntityManager()));
         List<Turn> turns = turnService.loadTurnByPatient(patient.getId());
+        if(turns.isEmpty()){
+            System.out.println("No turn");
+            return;
+        }
         turns.forEach(turn -> System.out.println("id: " + turn.getId() + " " + turn));
         Validation validation = new Validation();
         System.out.print("Enter id: ");

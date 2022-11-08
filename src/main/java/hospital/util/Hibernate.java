@@ -5,9 +5,15 @@ import jakarta.persistence.Persistence;
 
 public class Hibernate {
 
-    private Hibernate(){}
-    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("clinic");
+    private Hibernate() {
+    }
 
-    public static EntityManagerFactory getEntityManagerFactory(){return ENTITY_MANAGER_FACTORY;}
+    private static EntityManagerFactory entityManagerFactory;
+
+    public static EntityManagerFactory getEntityManagerFactory() {
+        if (entityManagerFactory == null)
+            entityManagerFactory = Persistence.createEntityManagerFactory("clinic");
+        return entityManagerFactory;
+    }
 
 }
